@@ -1,5 +1,5 @@
-# steps:
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   args: ['functions', 'deploy', 'py_flask_function', '--source=.']
-script:
-- gcloud functions deploy py_flask_function --gen2 --region=us-central1 --runtime=python311 --source=. --entry-point=hello_http --trigger-http --project prime-bridge-351205  --region us-central1 --allow-unauthenticated
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['functions', 'deploy', 'py_flask_function', '--source=.']
+# script:
+# - gcloud functions deploy py_flask_function --gen2 --region=us-central1 --runtime=python311 --source=. --entry-point=hello_http --trigger-http --project prime-bridge-351205  --region us-central1 --allow-unauthenticated
