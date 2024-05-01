@@ -1,7 +1,12 @@
 import functions_framework
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
-@functions_framework.http
-def hello_http(request):
+app = Flask("internal")
+CORS(app)
+
+@app.route('/report/api/generatefullreport', methods=['GET', 'POST'])
+def generatefullreport():
     """HTTP Cloud Function.
     Args:
         request (flask.Request): The request object.
@@ -21,3 +26,9 @@ def hello_http(request):
     else:
         name = 'World'
     return 'Good Morning Sunshine {}!'.format(name)
+
+
+@functions_framework.http
+def hello_http(request):
+     with app.request_context(request.environ):
+        return app.full_dispatch_request()
